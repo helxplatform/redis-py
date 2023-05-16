@@ -26,7 +26,7 @@ class Edge:
         res = ""
         if self.properties:
             props = ",".join(
-                key + ":" + str(quote_string(val))
+                f"`{key}`" + ":" + str(quote_string(val))
                 for key, val in sorted(self.properties.items())
             )
             res += "{" + props + "}"
@@ -43,10 +43,10 @@ class Edge:
         # Edge
         res += "-["
         if self.relation:
-            res += ":" + self.relation
+            res += ":" + f"`{self.relation}`"
         if self.properties:
             props = ",".join(
-                key + ":" + str(quote_string(val))
+                f"`{key}`" + ":" + str(quote_string(val))
                 for key, val in sorted(self.properties.items())
             )
             res += "{" + props + "}"

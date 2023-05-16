@@ -41,7 +41,7 @@ class Node:
         res = ""
         if self.properties:
             props = ",".join(
-                key + ":" + str(quote_string(val))
+                f"`{key}`" + ":" + str(quote_string(val))
                 for key, val in sorted(self.properties.items())
             )
             res += "{" + props + "}"
@@ -53,10 +53,10 @@ class Node:
         if self.alias:
             res += self.alias
         if self.labels:
-            res += ":" + ":".join(self.labels)
+            res += ":" + ":".join([f"`{label}`" for label in self.labels])
         if self.properties:
             props = ",".join(
-                key + ":" + str(quote_string(val))
+                f"`{key}`" + ":" + str(quote_string(val))
                 for key, val in sorted(self.properties.items())
             )
             res += "{" + props + "}"
